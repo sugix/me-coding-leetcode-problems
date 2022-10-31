@@ -1,6 +1,3 @@
-# Write your MySQL query statement below
-
-SELECT Score,  (SELECT COUNT(DISTINCT(Score)) FROM  Scores b WHERE b.Score > a.Score) + 1 AS Rank
-       FROM Scores a
-       ORDER by Score DESC
-
+/* Write your T-SQL query statement below */
+SELECT score, DENSE_RANK() OVER (ORDER BY score DESC) AS Rank
+FROM scores;
