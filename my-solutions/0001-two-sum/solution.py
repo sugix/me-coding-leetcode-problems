@@ -1,15 +1,17 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        lookup_dict = {}
-        result_indices = []
 
-        for i,num in enumerate(nums):
-            remaining = target - num
+        index_map = {}
+        indices = []
 
-            if remaining in lookup_dict:
-                result_indices.append(i)
-                result_indices.append(lookup_dict[remaining])
+        for index, value in enumerate(nums):
+
+            second_number = target - nums[index]
+
+            if index_map.get(second_number,None) is not None:
+                indices.append(index)
+                indices.append(index_map[second_number])
             else:
-                lookup_dict[num] = i
-
-        return result_indices
+                index_map[value] = index
+        
+        return indices
