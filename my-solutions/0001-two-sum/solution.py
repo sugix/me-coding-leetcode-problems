@@ -1,17 +1,19 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
 
-        index_map = {}
+        value_index_map = {}
         indices = []
 
-        for index, value in enumerate(nums):
+        for index, num in enumerate(nums):
 
-            second_number = target - nums[index]
+            ## Find the second value from the target
+            second_num = target - num
 
-            if index_map.get(second_number,None) is not None:
+            if value_index_map.get(second_num, None) is not None:
+                second_indx = value_index_map.get(second_num)
                 indices.append(index)
-                indices.append(index_map[second_number])
+                indices.append(second_indx)
             else:
-                index_map[value] = index
-        
+                value_index_map[num]=index
+
         return indices
