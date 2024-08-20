@@ -1,19 +1,20 @@
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
 
-        if len(strs) == 0:
+        if not strs:
             return ""
+
         if len(strs) == 1:
             return strs[0]
+
         strs.sort()
+        prefix = ""
 
-        lcp = []
+        for i in range(len(strs[0])):
 
-        for str1_ch, str2_ch in zip(strs[0], strs[-1]):
-            if str1_ch == str2_ch:
-                lcp.append(str1_ch)
+            if strs[0][i] == strs[-1][i]:
+                prefix += strs[0][i]
             else:
                 break
-        
-        return "".join(lcp)
 
+        return prefix
